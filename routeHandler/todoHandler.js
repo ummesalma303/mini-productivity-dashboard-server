@@ -1,14 +1,32 @@
-const express = require('express');
+import express from 'express';
+import mongoose from 'mongoose';
+import todoSchema from '../schemas/todoSchema.js';
+
 const router = express.Router();
+const Todo = mongoose.model('Todo', todoSchema);
 
-// Get All The Todo's
+// GET ALL TODO'S
 router.get('/todo', async (req, res) => {
-  res.send('All todos will be returned from here');
+ try {
+  const result = await Todo.find()
+    res.status(201).json(result);
+ } catch (error) {
+  console.log(error)
+    res.status(400).json({ error: 'server site error' });
+ }
 });
 
-// Get All The Todo's
-router.post('/todo', async (req, res) => {
-  res.send('All todos will be returned from here');
+// POST A TODO
+router.post('/', async (req, res) => {
+  try {
+    const newTodo = new Todo(req.body)
+    const data = await newTodo.save();
+    // res.send(data)
+    res.status(201).json(data);
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({ error: 'server site error' });
+  }
 });
 
-module.exports = router; 
+export default router;
