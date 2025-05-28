@@ -42,4 +42,24 @@ router.patch('/:id', async (req, res) => {
     res.status(400).json({ error: 'server site error' });
  }
 });
+// update task
+router.patch('/task/:id', async (req, res) => {
+  const task = req.body
+  
+ try {
+  const result = await Task.findByIdAndUpdate( {_id: req.params.id}, { $set:{ 
+    title: task.title,
+    priority: task.priority,
+    completed: task.completed,
+    description: task?.description,
+    date: task.date
+ } }, { new: true })
+    res.status(201).json(result);
+ } catch (error) {
+  console.log(error)
+    res.status(400).json({ error: 'server site error' });
+ }
+});
 export default router;
+
+// DELETE TASK
