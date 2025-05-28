@@ -60,7 +60,6 @@ router.patch('/task/:id', async (req, res) => {
     res.status(400).json({ error: 'server site error' });
  }
 });
-export default router;
 
 // DELETE TASK
 router.delete('/task/:id', async (req, res) => {
@@ -73,3 +72,6 @@ router.delete('/task/:id', async (req, res) => {
     res.status(400).json({ error: 'server site error' });
  }
 });
+
+
+export default router;
