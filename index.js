@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import todoHandler from './routeHandler/todoHandler.js';
+import taskHandler from './routeHandler/taskHandler.js';
 dotenv.config();
 
 
@@ -20,7 +20,7 @@ mongoose.connect(uri)
 .catch(err=>console.log(err))
 
 /* ------------------------------------ Application Routes ----------------------------------- */
-app.use("/", todoHandler);
+app.use("/", taskHandler);
 
 app.get("/", (req, res) => {
     res.send("Hello i am your Mini productivity tool Server..");

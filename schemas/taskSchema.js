@@ -18,11 +18,12 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const todoSchema = new Schema({
+const taskSchema = new Schema({
   title: {type:String, require:true}, 
-  status: {type:String,enum:["active", 'inactive']},
+  priority: {type:String,enum:["high", 'medium', 'low']},
+  completed:{type: Boolean},
   description:{type: String, require:true},
-  data:{type: Schema.Types.Date, default: Date.now}
+  date:{type: Date}
 });
 
-export default todoSchema;
+export default taskSchema;
