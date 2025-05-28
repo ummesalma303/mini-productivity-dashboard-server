@@ -63,3 +63,13 @@ router.patch('/task/:id', async (req, res) => {
 export default router;
 
 // DELETE TASK
+router.delete('/task/:id', async (req, res) => {
+  console.log(req.body)
+ try {
+  const result = await Task.deleteOne( {_id: req.params.id})
+    res.status(201).json({ message: 'Task successfully delete' });
+ } catch (error) {
+  console.log(error)
+    res.status(400).json({ error: 'server site error' });
+ }
+});
