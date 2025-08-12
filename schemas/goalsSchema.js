@@ -5,6 +5,8 @@ const taskSchema = new Schema({
   goal_title: {type:String, require:true}, 
    
   goals_description:{type: String, require:true},
+  completed:{type:Boolean, require: true},
+  category:{type:String, require: true},
   date:{type: Date}
 });
 

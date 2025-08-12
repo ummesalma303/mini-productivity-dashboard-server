@@ -7,7 +7,7 @@ const Goals = mongoose.model('Goals', taskSchema);
 
 
 // POST A Task
-router.post('/goals', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newGoals = new Goals(req.body)
     const data = await newGoals.save();
