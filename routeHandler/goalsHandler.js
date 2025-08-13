@@ -19,4 +19,14 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req,res)=>{
+   try {
+  const result = await Goals.find()
+    res.status(201).json(result);
+ } catch (error) {
+  console.log(error)
+    res.status(400).json({ error: 'server site error' });
+ }
+})
+
 export default router;

@@ -10,4 +10,5 @@ const taskSchema = new Schema({
   date:{type: Date}
 });
 
+
 export default taskSchema;
